@@ -37,7 +37,7 @@ function Throttle () {
         var attr;
         if (self.ip) {
             attr = req.connection.remoteAddress;
-        } else if (self.xff) {
+        } else if (self.xff && req.headers['x-forwarded-for']) {
             attr = req.headers['x-forwarded-for'].split(',')[0];
         } else if (self.username) {
             attr = req.username;
